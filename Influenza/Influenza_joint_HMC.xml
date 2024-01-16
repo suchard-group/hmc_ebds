@@ -5680,6 +5680,7 @@
             <parameter idref="bdss.birthRate"/>
 			<parameter idref="bdss.deathRate"/>
 			<parameter idref="bdss.samplingRate"/>
+            <birthDeathCompoundParameterLogger idref="effectiveReproductiveNumber"/>
 			<speciationLikelihood idref="speciation"/>
 		</log>
 
