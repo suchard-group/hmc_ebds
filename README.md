@@ -105,12 +105,12 @@ The analyses on this dataset are:
   -seed 6661 -overwrite \
   ../HIV/HIV_joint_HMC.xml
   ```
-- Joint phylogeny inference with HMC
+- Joint phylogeny inference with MH-MCMC
   ```
   java -Djava.library.path=/usr/local/lib \
   -jar /path/to/beast-mcmc/build/dist/beast.jar \
   -seed 6661 -overwrite \
-  ../HIV/HIV_joint_HMC.xml
+  ../HIV/HIV_joint_MHMCMC.xml
   ```
 
 
@@ -138,12 +138,12 @@ The analyses on this dataset are:
   -seed 6661 -overwrite \
   ../Influenza/Influenza_joint_HMC.xml
   ```
-- Joint phylogeny inference with HMC
+- Joint phylogeny inference with MH-MCMC
   ```
   java -Djava.library.path=/usr/local/lib \
   -jar /path/to/beast-mcmc/build/dist/beast.jar \
   -seed 6661 -overwrite \
-  ../Influenza/Influenza_joint_HMC.xml
+  ../Influenza/Influenza_joint_MHMCMC.xml
   ```
 
 
@@ -173,7 +173,7 @@ The analyses on this dataset are:
   ../Ebola/ebol_joint_HMC.xml
   ```
 
-- Joint phylogeny inference with HMC
+- Joint phylogeny inference with MH-MCMC
   ```
   java -Djava.library.path=/usr/local/lib \
   -jar /path/to/beast-mcmc/build/dist/beast.jar \
