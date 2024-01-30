@@ -1,0 +1,38 @@
+##########
+# Analysis options
+##########
+
+# Specify tree file
+TREE_FILE = args[1]
+
+# Prior on BDPSTP
+NUM_EPOCHS = args[2]
+
+##########
+# Get data
+##########
+test_tree <- readTrees("data/" + TREE_FILE)[1]
+
+taxa <- test_tree.taxa()
+
+for (i in NUM_EPOCHS) {
+    lambda[i] <- someValue
+    rho[i] <- someValue
+    someOtherParameter[i] <- someOtherValue
+}
+
+phylogeny ~ dnBDSTP(originAge=,
+                    lambda=lambda,
+                    mu=,
+                    psi=,
+                    Phi=,
+                    r=,
+                    taxa=taxa,
+                    initialTree=test_tree,
+                    condition="time")
+phylogeny.clamp(test_tree)
+
+#### Timing happens here
+phylogeny.lnProbability(test_tree)
+
+q()

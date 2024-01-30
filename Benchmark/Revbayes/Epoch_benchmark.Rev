@@ -1,0 +1,141 @@
+
+##########
+# Analysis options
+##########
+
+# Specify tree file
+
+# Prior on BDPSTP
+NUM_EPOCHS = 5
+
+##########
+# Get data
+##########
+test_tree <- readTrees("~/hmc_ebds/Benchmark/simulated_trees/12.tre")[1]
+
+taxa <- test_tree.taxa()
+
+origin=7.812373
+
+for (i in 1:NUM_EPOCHS) {
+    lambda[i] <- 73.74503
+    mu[i] <- 4.321
+    psi[i] <- 1.234
+    Phi[i] <- 0
+}
+
+for (i in 1:(NUM_EPOCHS-1)) {
+    line[i] <- i*(1/NUM_EPOCHS)
+}
+
+Phi[1] <- 0.3
+phylogeny ~ dnBDSTP(originAge=origin,
+                    lambda=lambda,
+                    mu=mu,
+                    psi=psi,
+                    Phi=Phi,
+                    r=1,
+                    taxa=taxa,
+                    timeline=origin * line,
+                    initialTree=test_tree,
+                    condition="time")
+
+phylogeny.clamp(test_tree)
+
+#### Timing happens here
+phylogeny.lnProbability()
+
+
+##########
+# Analysis options
+##########
+
+# Specify tree file
+
+# Prior on BDPSTP
+NUM_EPOCHS = 16
+
+##########
+# Get data
+##########
+test_tree <- readTrees("~/hmc_ebds/Benchmark/simulated_trees/12.tre")[1]
+
+taxa <- test_tree.taxa()
+
+origin=7.812373
+
+for (i in 1:NUM_EPOCHS) {
+    lambda[i] <- 73.74503
+    mu[i] <- 4.321
+    psi[i] <- 1.234
+    Phi[i] <- 0
+}
+
+for (i in 1:(NUM_EPOCHS-1)) {
+    line[i] <- i*(1/NUM_EPOCHS)
+}
+
+Phi[1] <- 0.3
+phylogeny ~ dnBDSTP(originAge=origin,
+                    lambda=lambda,
+                    mu=mu,
+                    psi=psi,
+                    Phi=Phi,
+                    r=1,
+                    taxa=taxa,
+                    timeline=origin * line,
+                    initialTree=test_tree,
+                    condition="time")
+
+phylogeny.clamp(test_tree)
+
+#### Timing happens here
+phylogeny.lnProbability()
+
+
+##########
+# Analysis options
+##########
+
+# Specify tree file
+
+# Prior on BDPSTP
+NUM_EPOCHS = 32
+
+##########
+# Get data
+##########
+test_tree <- readTrees("~/hmc_ebds/Benchmark/simulated_trees/12.tre")[1]
+
+taxa <- test_tree.taxa()
+
+origin=7.812373
+
+for (i in 1:NUM_EPOCHS) {
+    lambda[i] <- 73.74503
+    mu[i] <- 4.321
+    psi[i] <- 1.234
+    Phi[i] <- 0
+}
+
+for (i in 1:(NUM_EPOCHS-1)) {
+    line[i] <- i*(1/NUM_EPOCHS)
+}
+
+Phi[1] <- 0.3
+phylogeny ~ dnBDSTP(originAge=origin,
+                    lambda=lambda,
+                    mu=mu,
+                    psi=psi,
+                    Phi=Phi,
+                    r=1,
+                    taxa=taxa,
+                    timeline=origin * line,
+                    initialTree=test_tree,
+                    condition="time")
+
+phylogeny.clamp(test_tree)
+
+#### Timing happens here
+phylogeny.lnProbability()
+

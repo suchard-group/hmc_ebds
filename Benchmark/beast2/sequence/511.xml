@@ -1,0 +1,694 @@
+<!-- Model: Birth-death skyline model (with contemporaneous sampling) -->
+<!-- Source: Stadler T, Kühnert D, Bonhoeffer S, Drummond AJ (2013) Birth-death skyline plot reveals temporal changes of epidemic spread in HIV and HCV. PNAS 110: 228–233. -->
+<!-- BEAST version: Runs on BEAST 2.1.0 - see beast2.org for downloads -->
+
+
+<beast namespace="beast.pkgmgmt:beast.base.core:beast.base.inference:beast.base.evolution.alignment:beast.base.evolution.tree.coalescent:beast.base.util:beast.base.math:beast.evolution.nuc:beast.base.evolution.operator:beast.base.inference.operator:beast.base.evolution.sitemodel:beast.base.evolution.substitutionmodel:beast.base.evolution.likelihood:beast.base.evolution.speciation:beast.pkgmgmt:beast.base.core:beast.base.inference.parameter" version="2.0">
+
+
+    <!-- The sequence alignment                                                  -->
+    <!-- ntax=6 nchar=768                                                        -->
+    <!-- npatterns=69                                                            -->
+    <!-- specify the taxa -->
+<data id="alignment" dataType="nucleotide">
+    <sequence taxon="t63">?</sequence>
+    <sequence taxon="t204">?</sequence>
+    <sequence taxon="t190">?</sequence>
+    <sequence taxon="t100">?</sequence>
+    <sequence taxon="t201">?</sequence>
+    <sequence taxon="t112">?</sequence>
+    <sequence taxon="t510">?</sequence>
+    <sequence taxon="t302">?</sequence>
+    <sequence taxon="t414">?</sequence>
+    <sequence taxon="t392">?</sequence>
+    <sequence taxon="t276">?</sequence>
+    <sequence taxon="t81">?</sequence>
+    <sequence taxon="t257">?</sequence>
+    <sequence taxon="t461">?</sequence>
+    <sequence taxon="t236">?</sequence>
+    <sequence taxon="t402">?</sequence>
+    <sequence taxon="t291">?</sequence>
+    <sequence taxon="t57">?</sequence>
+    <sequence taxon="t33">?</sequence>
+    <sequence taxon="t17">?</sequence>
+    <sequence taxon="t377">?</sequence>
+    <sequence taxon="t96">?</sequence>
+    <sequence taxon="t456">?</sequence>
+    <sequence taxon="t502">?</sequence>
+    <sequence taxon="t7">?</sequence>
+    <sequence taxon="t117">?</sequence>
+    <sequence taxon="t175">?</sequence>
+    <sequence taxon="t265">?</sequence>
+    <sequence taxon="t205">?</sequence>
+    <sequence taxon="t103">?</sequence>
+    <sequence taxon="t124">?</sequence>
+    <sequence taxon="t162">?</sequence>
+    <sequence taxon="t234">?</sequence>
+    <sequence taxon="t344">?</sequence>
+    <sequence taxon="t41">?</sequence>
+    <sequence taxon="t125">?</sequence>
+    <sequence taxon="t269">?</sequence>
+    <sequence taxon="t93">?</sequence>
+    <sequence taxon="t131">?</sequence>
+    <sequence taxon="t448">?</sequence>
+    <sequence taxon="t52">?</sequence>
+    <sequence taxon="t319">?</sequence>
+    <sequence taxon="t426">?</sequence>
+    <sequence taxon="t159">?</sequence>
+    <sequence taxon="t222">?</sequence>
+    <sequence taxon="t434">?</sequence>
+    <sequence taxon="t208">?</sequence>
+    <sequence taxon="t23">?</sequence>
+    <sequence taxon="t16">?</sequence>
+    <sequence taxon="t107">?</sequence>
+    <sequence taxon="t340">?</sequence>
+    <sequence taxon="t11">?</sequence>
+    <sequence taxon="t9">?</sequence>
+    <sequence taxon="t495">?</sequence>
+    <sequence taxon="t154">?</sequence>
+    <sequence taxon="t477">?</sequence>
+    <sequence taxon="t209">?</sequence>
+    <sequence taxon="t285">?</sequence>
+    <sequence taxon="t198">?</sequence>
+    <sequence taxon="t15">?</sequence>
+    <sequence taxon="t85">?</sequence>
+    <sequence taxon="t158">?</sequence>
+    <sequence taxon="t361">?</sequence>
+    <sequence taxon="t43">?</sequence>
+    <sequence taxon="t195">?</sequence>
+    <sequence taxon="t253">?</sequence>
+    <sequence taxon="t478">?</sequence>
+    <sequence taxon="t330">?</sequence>
+    <sequence taxon="t3">?</sequence>
+    <sequence taxon="t19">?</sequence>
+    <sequence taxon="t471">?</sequence>
+    <sequence taxon="t321">?</sequence>
+    <sequence taxon="t287">?</sequence>
+    <sequence taxon="t55">?</sequence>
+    <sequence taxon="t259">?</sequence>
+    <sequence taxon="t273">?</sequence>
+    <sequence taxon="t504">?</sequence>
+    <sequence taxon="t391">?</sequence>
+    <sequence taxon="t297">?</sequence>
+    <sequence taxon="t210">?</sequence>
+    <sequence taxon="t406">?</sequence>
+    <sequence taxon="t411">?</sequence>
+    <sequence taxon="t430">?</sequence>
+    <sequence taxon="t393">?</sequence>
+    <sequence taxon="t309">?</sequence>
+    <sequence taxon="t36">?</sequence>
+    <sequence taxon="t89">?</sequence>
+    <sequence taxon="t134">?</sequence>
+    <sequence taxon="t139">?</sequence>
+    <sequence taxon="t28">?</sequence>
+    <sequence taxon="t284">?</sequence>
+    <sequence taxon="t463">?</sequence>
+    <sequence taxon="t270">?</sequence>
+    <sequence taxon="t422">?</sequence>
+    <sequence taxon="t197">?</sequence>
+    <sequence taxon="t423">?</sequence>
+    <sequence taxon="t12">?</sequence>
+    <sequence taxon="t258">?</sequence>
+    <sequence taxon="t116">?</sequence>
+    <sequence taxon="t498">?</sequence>
+    <sequence taxon="t338">?</sequence>
+    <sequence taxon="t170">?</sequence>
+    <sequence taxon="t326">?</sequence>
+    <sequence taxon="t60">?</sequence>
+    <sequence taxon="t128">?</sequence>
+    <sequence taxon="t318">?</sequence>
+    <sequence taxon="t42">?</sequence>
+    <sequence taxon="t153">?</sequence>
+    <sequence taxon="t427">?</sequence>
+    <sequence taxon="t192">?</sequence>
+    <sequence taxon="t51">?</sequence>
+    <sequence taxon="t476">?</sequence>
+    <sequence taxon="t26">?</sequence>
+    <sequence taxon="t436">?</sequence>
+    <sequence taxon="t363">?</sequence>
+    <sequence taxon="t178">?</sequence>
+    <sequence taxon="t45">?</sequence>
+    <sequence taxon="t441">?</sequence>
+    <sequence taxon="t132">?</sequence>
+    <sequence taxon="t82">?</sequence>
+    <sequence taxon="t450">?</sequence>
+    <sequence taxon="t403">?</sequence>
+    <sequence taxon="t173">?</sequence>
+    <sequence taxon="t8">?</sequence>
+    <sequence taxon="t191">?</sequence>
+    <sequence taxon="t83">?</sequence>
+    <sequence taxon="t440">?</sequence>
+    <sequence taxon="t314">?</sequence>
+    <sequence taxon="t335">?</sequence>
+    <sequence taxon="t294">?</sequence>
+    <sequence taxon="t226">?</sequence>
+    <sequence taxon="t166">?</sequence>
+    <sequence taxon="t283">?</sequence>
+    <sequence taxon="t164">?</sequence>
+    <sequence taxon="t343">?</sequence>
+    <sequence taxon="t412">?</sequence>
+    <sequence taxon="t56">?</sequence>
+    <sequence taxon="t384">?</sequence>
+    <sequence taxon="t241">?</sequence>
+    <sequence taxon="t457">?</sequence>
+    <sequence taxon="t168">?</sequence>
+    <sequence taxon="t126">?</sequence>
+    <sequence taxon="t80">?</sequence>
+    <sequence taxon="t229">?</sequence>
+    <sequence taxon="t136">?</sequence>
+    <sequence taxon="t203">?</sequence>
+    <sequence taxon="t121">?</sequence>
+    <sequence taxon="t129">?</sequence>
+    <sequence taxon="t413">?</sequence>
+    <sequence taxon="t438">?</sequence>
+    <sequence taxon="t181">?</sequence>
+    <sequence taxon="t429">?</sequence>
+    <sequence taxon="t212">?</sequence>
+    <sequence taxon="t432">?</sequence>
+    <sequence taxon="t179">?</sequence>
+    <sequence taxon="t310">?</sequence>
+    <sequence taxon="t261">?</sequence>
+    <sequence taxon="t503">?</sequence>
+    <sequence taxon="t405">?</sequence>
+    <sequence taxon="t138">?</sequence>
+    <sequence taxon="t425">?</sequence>
+    <sequence taxon="t202">?</sequence>
+    <sequence taxon="t472">?</sequence>
+    <sequence taxon="t88">?</sequence>
+    <sequence taxon="t267">?</sequence>
+    <sequence taxon="t91">?</sequence>
+    <sequence taxon="t410">?</sequence>
+    <sequence taxon="t231">?</sequence>
+    <sequence taxon="t148">?</sequence>
+    <sequence taxon="t327">?</sequence>
+    <sequence taxon="t362">?</sequence>
+    <sequence taxon="t94">?</sequence>
+    <sequence taxon="t230">?</sequence>
+    <sequence taxon="t84">?</sequence>
+    <sequence taxon="t110">?</sequence>
+    <sequence taxon="t491">?</sequence>
+    <sequence taxon="t86">?</sequence>
+    <sequence taxon="t171">?</sequence>
+    <sequence taxon="t506">?</sequence>
+    <sequence taxon="t339">?</sequence>
+    <sequence taxon="t293">?</sequence>
+    <sequence taxon="t2">?</sequence>
+    <sequence taxon="t238">?</sequence>
+    <sequence taxon="t72">?</sequence>
+    <sequence taxon="t358">?</sequence>
+    <sequence taxon="t292">?</sequence>
+    <sequence taxon="t421">?</sequence>
+    <sequence taxon="t39">?</sequence>
+    <sequence taxon="t459">?</sequence>
+    <sequence taxon="t275">?</sequence>
+    <sequence taxon="t379">?</sequence>
+    <sequence taxon="t243">?</sequence>
+    <sequence taxon="t333">?</sequence>
+    <sequence taxon="t149">?</sequence>
+    <sequence taxon="t481">?</sequence>
+    <sequence taxon="t252">?</sequence>
+    <sequence taxon="t398">?</sequence>
+    <sequence taxon="t101">?</sequence>
+    <sequence taxon="t469">?</sequence>
+    <sequence taxon="t336">?</sequence>
+    <sequence taxon="t10">?</sequence>
+    <sequence taxon="t311">?</sequence>
+    <sequence taxon="t274">?</sequence>
+    <sequence taxon="t466">?</sequence>
+    <sequence taxon="t312">?</sequence>
+    <sequence taxon="t172">?</sequence>
+    <sequence taxon="t341">?</sequence>
+    <sequence taxon="t58">?</sequence>
+    <sequence taxon="t485">?</sequence>
+    <sequence taxon="t420">?</sequence>
+    <sequence taxon="t431">?</sequence>
+    <sequence taxon="t242">?</sequence>
+    <sequence taxon="t245">?</sequence>
+    <sequence taxon="t449">?</sequence>
+    <sequence taxon="t193">?</sequence>
+    <sequence taxon="t113">?</sequence>
+    <sequence taxon="t286">?</sequence>
+    <sequence taxon="t240">?</sequence>
+    <sequence taxon="t146">?</sequence>
+    <sequence taxon="t465">?</sequence>
+    <sequence taxon="t382">?</sequence>
+    <sequence taxon="t161">?</sequence>
+    <sequence taxon="t78">?</sequence>
+    <sequence taxon="t122">?</sequence>
+    <sequence taxon="t271">?</sequence>
+    <sequence taxon="t493">?</sequence>
+    <sequence taxon="t5">?</sequence>
+    <sequence taxon="t437">?</sequence>
+    <sequence taxon="t206">?</sequence>
+    <sequence taxon="t380">?</sequence>
+    <sequence taxon="t407">?</sequence>
+    <sequence taxon="t79">?</sequence>
+    <sequence taxon="t433">?</sequence>
+    <sequence taxon="t416">?</sequence>
+    <sequence taxon="t397">?</sequence>
+    <sequence taxon="t109">?</sequence>
+    <sequence taxon="t115">?</sequence>
+    <sequence taxon="t323">?</sequence>
+    <sequence taxon="t217">?</sequence>
+    <sequence taxon="t467">?</sequence>
+    <sequence taxon="t399">?</sequence>
+    <sequence taxon="t492">?</sequence>
+    <sequence taxon="t232">?</sequence>
+    <sequence taxon="t37">?</sequence>
+    <sequence taxon="t264">?</sequence>
+    <sequence taxon="t157">?</sequence>
+    <sequence taxon="t372">?</sequence>
+    <sequence taxon="t74">?</sequence>
+    <sequence taxon="t213">?</sequence>
+    <sequence taxon="t288">?</sequence>
+    <sequence taxon="t70">?</sequence>
+    <sequence taxon="t30">?</sequence>
+    <sequence taxon="t188">?</sequence>
+    <sequence taxon="t439">?</sequence>
+    <sequence taxon="t29">?</sequence>
+    <sequence taxon="t186">?</sequence>
+    <sequence taxon="t454">?</sequence>
+    <sequence taxon="t322">?</sequence>
+    <sequence taxon="t66">?</sequence>
+    <sequence taxon="t239">?</sequence>
+    <sequence taxon="t442">?</sequence>
+    <sequence taxon="t235">?</sequence>
+    <sequence taxon="t368">?</sequence>
+    <sequence taxon="t349">?</sequence>
+    <sequence taxon="t428">?</sequence>
+    <sequence taxon="t44">?</sequence>
+    <sequence taxon="t464">?</sequence>
+    <sequence taxon="t237">?</sequence>
+    <sequence taxon="t199">?</sequence>
+    <sequence taxon="t123">?</sequence>
+    <sequence taxon="t447">?</sequence>
+    <sequence taxon="t135">?</sequence>
+    <sequence taxon="t127">?</sequence>
+    <sequence taxon="t40">?</sequence>
+    <sequence taxon="t20">?</sequence>
+    <sequence taxon="t177">?</sequence>
+    <sequence taxon="t348">?</sequence>
+    <sequence taxon="t47">?</sequence>
+    <sequence taxon="t260">?</sequence>
+    <sequence taxon="t475">?</sequence>
+    <sequence taxon="t483">?</sequence>
+    <sequence taxon="t108">?</sequence>
+    <sequence taxon="t35">?</sequence>
+    <sequence taxon="t387">?</sequence>
+    <sequence taxon="t102">?</sequence>
+    <sequence taxon="t31">?</sequence>
+    <sequence taxon="t400">?</sequence>
+    <sequence taxon="t216">?</sequence>
+    <sequence taxon="t24">?</sequence>
+    <sequence taxon="t304">?</sequence>
+    <sequence taxon="t389">?</sequence>
+    <sequence taxon="t281">?</sequence>
+    <sequence taxon="t49">?</sequence>
+    <sequence taxon="t75">?</sequence>
+    <sequence taxon="t381">?</sequence>
+    <sequence taxon="t277">?</sequence>
+    <sequence taxon="t145">?</sequence>
+    <sequence taxon="t219">?</sequence>
+    <sequence taxon="t137">?</sequence>
+    <sequence taxon="t364">?</sequence>
+    <sequence taxon="t118">?</sequence>
+    <sequence taxon="t443">?</sequence>
+    <sequence taxon="t307">?</sequence>
+    <sequence taxon="t295">?</sequence>
+    <sequence taxon="t184">?</sequence>
+    <sequence taxon="t500">?</sequence>
+    <sequence taxon="t460">?</sequence>
+    <sequence taxon="t156">?</sequence>
+    <sequence taxon="t347">?</sequence>
+    <sequence taxon="t458">?</sequence>
+    <sequence taxon="t87">?</sequence>
+    <sequence taxon="t468">?</sequence>
+    <sequence taxon="t474">?</sequence>
+    <sequence taxon="t247">?</sequence>
+    <sequence taxon="t244">?</sequence>
+    <sequence taxon="t69">?</sequence>
+    <sequence taxon="t255">?</sequence>
+    <sequence taxon="t462">?</sequence>
+    <sequence taxon="t214">?</sequence>
+    <sequence taxon="t365">?</sequence>
+    <sequence taxon="t375">?</sequence>
+    <sequence taxon="t176">?</sequence>
+    <sequence taxon="t417">?</sequence>
+    <sequence taxon="t27">?</sequence>
+    <sequence taxon="t360">?</sequence>
+    <sequence taxon="t142">?</sequence>
+    <sequence taxon="t13">?</sequence>
+    <sequence taxon="t1">?</sequence>
+    <sequence taxon="t482">?</sequence>
+    <sequence taxon="t97">?</sequence>
+    <sequence taxon="t278">?</sequence>
+    <sequence taxon="t167">?</sequence>
+    <sequence taxon="t369">?</sequence>
+    <sequence taxon="t160">?</sequence>
+    <sequence taxon="t61">?</sequence>
+    <sequence taxon="t366">?</sequence>
+    <sequence taxon="t505">?</sequence>
+    <sequence taxon="t71">?</sequence>
+    <sequence taxon="t445">?</sequence>
+    <sequence taxon="t105">?</sequence>
+    <sequence taxon="t501">?</sequence>
+    <sequence taxon="t50">?</sequence>
+    <sequence taxon="t21">?</sequence>
+    <sequence taxon="t120">?</sequence>
+    <sequence taxon="t296">?</sequence>
+    <sequence taxon="t331">?</sequence>
+    <sequence taxon="t141">?</sequence>
+    <sequence taxon="t385">?</sequence>
+    <sequence taxon="t488">?</sequence>
+    <sequence taxon="t424">?</sequence>
+    <sequence taxon="t418">?</sequence>
+    <sequence taxon="t404">?</sequence>
+    <sequence taxon="t14">?</sequence>
+    <sequence taxon="t218">?</sequence>
+    <sequence taxon="t48">?</sequence>
+    <sequence taxon="t435">?</sequence>
+    <sequence taxon="t144">?</sequence>
+    <sequence taxon="t263">?</sequence>
+    <sequence taxon="t305">?</sequence>
+    <sequence taxon="t163">?</sequence>
+    <sequence taxon="t388">?</sequence>
+    <sequence taxon="t46">?</sequence>
+    <sequence taxon="t106">?</sequence>
+    <sequence taxon="t268">?</sequence>
+    <sequence taxon="t415">?</sequence>
+    <sequence taxon="t300">?</sequence>
+    <sequence taxon="t325">?</sequence>
+    <sequence taxon="t408">?</sequence>
+    <sequence taxon="t77">?</sequence>
+    <sequence taxon="t290">?</sequence>
+    <sequence taxon="t484">?</sequence>
+    <sequence taxon="t355">?</sequence>
+    <sequence taxon="t350">?</sequence>
+    <sequence taxon="t470">?</sequence>
+    <sequence taxon="t180">?</sequence>
+    <sequence taxon="t489">?</sequence>
+    <sequence taxon="t185">?</sequence>
+    <sequence taxon="t59">?</sequence>
+    <sequence taxon="t169">?</sequence>
+    <sequence taxon="t455">?</sequence>
+    <sequence taxon="t371">?</sequence>
+    <sequence taxon="t386">?</sequence>
+    <sequence taxon="t337">?</sequence>
+    <sequence taxon="t90">?</sequence>
+    <sequence taxon="t68">?</sequence>
+    <sequence taxon="t494">?</sequence>
+    <sequence taxon="t221">?</sequence>
+    <sequence taxon="t165">?</sequence>
+    <sequence taxon="t401">?</sequence>
+    <sequence taxon="t282">?</sequence>
+    <sequence taxon="t306">?</sequence>
+    <sequence taxon="t507">?</sequence>
+    <sequence taxon="t95">?</sequence>
+    <sequence taxon="t334">?</sequence>
+    <sequence taxon="t329">?</sequence>
+    <sequence taxon="t155">?</sequence>
+    <sequence taxon="t227">?</sequence>
+    <sequence taxon="t390">?</sequence>
+    <sequence taxon="t130">?</sequence>
+    <sequence taxon="t25">?</sequence>
+    <sequence taxon="t266">?</sequence>
+    <sequence taxon="t359">?</sequence>
+    <sequence taxon="t357">?</sequence>
+    <sequence taxon="t250">?</sequence>
+    <sequence taxon="t246">?</sequence>
+    <sequence taxon="t32">?</sequence>
+    <sequence taxon="t67">?</sequence>
+    <sequence taxon="t64">?</sequence>
+    <sequence taxon="t207">?</sequence>
+    <sequence taxon="t367">?</sequence>
+    <sequence taxon="t183">?</sequence>
+    <sequence taxon="t262">?</sequence>
+    <sequence taxon="t376">?</sequence>
+    <sequence taxon="t452">?</sequence>
+    <sequence taxon="t228">?</sequence>
+    <sequence taxon="t496">?</sequence>
+    <sequence taxon="t73">?</sequence>
+    <sequence taxon="t189">?</sequence>
+    <sequence taxon="t352">?</sequence>
+    <sequence taxon="t111">?</sequence>
+    <sequence taxon="t151">?</sequence>
+    <sequence taxon="t98">?</sequence>
+    <sequence taxon="t119">?</sequence>
+    <sequence taxon="t223">?</sequence>
+    <sequence taxon="t451">?</sequence>
+    <sequence taxon="t446">?</sequence>
+    <sequence taxon="t301">?</sequence>
+    <sequence taxon="t354">?</sequence>
+    <sequence taxon="t299">?</sequence>
+    <sequence taxon="t220">?</sequence>
+    <sequence taxon="t308">?</sequence>
+    <sequence taxon="t444">?</sequence>
+    <sequence taxon="t473">?</sequence>
+    <sequence taxon="t345">?</sequence>
+    <sequence taxon="t256">?</sequence>
+    <sequence taxon="t499">?</sequence>
+    <sequence taxon="t224">?</sequence>
+    <sequence taxon="t395">?</sequence>
+    <sequence taxon="t356">?</sequence>
+    <sequence taxon="t194">?</sequence>
+    <sequence taxon="t62">?</sequence>
+    <sequence taxon="t298">?</sequence>
+    <sequence taxon="t182">?</sequence>
+    <sequence taxon="t211">?</sequence>
+    <sequence taxon="t279">?</sequence>
+    <sequence taxon="t76">?</sequence>
+    <sequence taxon="t289">?</sequence>
+    <sequence taxon="t419">?</sequence>
+    <sequence taxon="t509">?</sequence>
+    <sequence taxon="t511">?</sequence>
+    <sequence taxon="t114">?</sequence>
+    <sequence taxon="t18">?</sequence>
+    <sequence taxon="t248">?</sequence>
+    <sequence taxon="t92">?</sequence>
+    <sequence taxon="t353">?</sequence>
+    <sequence taxon="t480">?</sequence>
+    <sequence taxon="t53">?</sequence>
+    <sequence taxon="t254">?</sequence>
+    <sequence taxon="t272">?</sequence>
+    <sequence taxon="t34">?</sequence>
+    <sequence taxon="t374">?</sequence>
+    <sequence taxon="t317">?</sequence>
+    <sequence taxon="t143">?</sequence>
+    <sequence taxon="t351">?</sequence>
+    <sequence taxon="t249">?</sequence>
+    <sequence taxon="t174">?</sequence>
+    <sequence taxon="t104">?</sequence>
+    <sequence taxon="t22">?</sequence>
+    <sequence taxon="t225">?</sequence>
+    <sequence taxon="t200">?</sequence>
+    <sequence taxon="t187">?</sequence>
+    <sequence taxon="t316">?</sequence>
+    <sequence taxon="t328">?</sequence>
+    <sequence taxon="t196">?</sequence>
+    <sequence taxon="t394">?</sequence>
+    <sequence taxon="t396">?</sequence>
+    <sequence taxon="t383">?</sequence>
+    <sequence taxon="t487">?</sequence>
+    <sequence taxon="t4">?</sequence>
+    <sequence taxon="t479">?</sequence>
+    <sequence taxon="t38">?</sequence>
+    <sequence taxon="t251">?</sequence>
+    <sequence taxon="t486">?</sequence>
+    <sequence taxon="t324">?</sequence>
+    <sequence taxon="t490">?</sequence>
+    <sequence taxon="t303">?</sequence>
+    <sequence taxon="t140">?</sequence>
+    <sequence taxon="t99">?</sequence>
+    <sequence taxon="t315">?</sequence>
+    <sequence taxon="t133">?</sequence>
+    <sequence taxon="t233">?</sequence>
+    <sequence taxon="t280">?</sequence>
+    <sequence taxon="t332">?</sequence>
+    <sequence taxon="t342">?</sequence>
+    <sequence taxon="t497">?</sequence>
+    <sequence taxon="t6">?</sequence>
+    <sequence taxon="t409">?</sequence>
+    <sequence taxon="t313">?</sequence>
+    <sequence taxon="t370">?</sequence>
+    <sequence taxon="t65">?</sequence>
+    <sequence taxon="t346">?</sequence>
+    <sequence taxon="t378">?</sequence>
+    <sequence taxon="t320">?</sequence>
+    <sequence taxon="t215">?</sequence>
+    <sequence taxon="t152">?</sequence>
+    <sequence taxon="t54">?</sequence>
+    <sequence taxon="t150">?</sequence>
+    <sequence taxon="t508">?</sequence>
+    <sequence taxon="t147">?</sequence>
+    <sequence taxon="t373">?</sequence>
+    <sequence taxon="t453">?</sequence>
+</data>
+
+
+
+    <!-- specify the tree -->
+   <tree id="tree" spec="beast.base.evolution.tree.TreeParser"  taxa="@alignment" adjustTipHeights="false" newick="(((t63:1.316873918,((((((((t204:0.2171662996,t190:0.1678721633):0.00546529552,(t100:0.9436625491,(t201:0.07390207778,t112:0.1439315435):0.7997310056):1.079256542):0.7249484227,((t510:1.223112752,(t302:0.4006397162,(t414:0.3978544413,t392:0.3978544413):0.002785274906):0.8224730354):0.4310063981,(t276:0.8109093367,((t81:0.1909615364,t257:0.1909615364):0.004407604083,t461:0.1953691405):0.6155401962):0.843209813):1.093748364):1.764903276,((((t236:0.007353051637,t402:0.007353051637):0.7593117251,t291:0.7666647768):1.590002118,(t57:0.4579397702,(((t33:0.06446300483,t17:0.06446300483):0.1355024602,t377:0.1999654651):0.1011162368,t96:0.3010817018):0.7727855893):1.282799603):1.270895157,((t456:0.09177952326,t502:0.2759080589):0.3617826765,((((t7:0.2011649019,t117:0.2011649019):0.5838081597,t175:0.2759415442):0.6251093331,(t265:0.8529796987,t205:1.052979699):0.557102696):0.4458921653,t103:0.1792051251):0.1798995504):1.591687941):0.8852087385):0.5269567503,(t124:1.383464896,(((((((((t162:0.5896794408,t234:0.1760029746):0.1569238617,t344:0.07313464839):0.6335069691,(((t41:0.4540610908,((t125:0.1240829919,t269:0.1240829919):0.07193193555,t93:0.1960149275):0.2580461633):1.905533079,t131:0.6690584555):0.6017898969,((((t448:0.4944394695,t52:0.4944394695):0.07504403345,t319:0.569483503):0.3310550397,t426:0.9005385427):0.7850322245,(((t159:0.4027211046,t222:0.2984423364):0.05646604555,t434:0.4591871502):0.1690203271,(t208:0.2196468641,t23:0.2196468641):0.4085606132):1.05736329):1.2758133):0.09126773902):0.04319032696,((((t16:0.8906965051,((t107:0.8092292748,t340:0.7865022021):0.06890248959,(t11:0.6643115115,(t9:0.08142238539,t495:0.08142238539):0.5828891261):0.2138202529):0.2759854929):0.4334668331,((t154:1.049985198,(((t477:0.4844153893,t209:0.4844153893):0.4173776218,(t285:0.03075547877,t198:0.03075547877):1.071037532):0.05682305366,(t15:0.671378011,(t85:0.09566071933,t158:0.09566071933):0.5757172916):0.2872380538):0.09136913354):0.4049549023,t361:0.5267968509):0.1326439899):0.2602773978,(((t43:0.0219527261,t195:0.3561092823):0.767123996,(t253:0.4038280738,(t478:0.3229116121,t330:0.3229116121):0.0809164617):0.7194052045):0.05201019154,t3:0.5175985769):0.6726180185):1.043766771,((t19:1.125831352,((t471:0.1221216752,t321:0.3962333955):0.3078930305,(t287:0.4524920284,(t55:0.3260126205,t259:0.1874147101):0.1264794079):0.2516343976):0.4217049264):0.6919200934,(((t273:0.5752178858,(t504:0.1169320061,t391:0.1169320061):0.2582858797):0.1346643909,(t297:0.4709082386,(t210:0.4104391318,t406:0.4104391318):0.06046910679):0.03897403824):0.4273488964,(t411:0.01417821414,t430:0.5459327284):0.3912984447):0.8805202726):1.073876814):0.204213873):0.109339625,((((t393:1.016537944,t309:1.517806702):0.02596773983,(t36:0.058135288,((t89:1.257721623,((t134:0.2649543116,((t139:0.3571299188,(t28:0.09539316665,t284:0.09539316665):0.2617367522):0.2856275459,t463:0.6427574647):0.1460068707):0.2516528306,(t270:0.1920728416,t422:0.1920728416):0.8483443244):0.2173044575):0.1699755027,t197:1.25677676):0.07277990137):0.04329741468):0.1275841543,t423:0.4211468424):1.046639249,(t12:0.5502408857,(((t258:0.4079187694,(t116:0.02865049721,t498:0.02865049721):0.3792682722):0.7684969779,(((t338:0.175145863,t170:0.175145863):0.7698574203,(t326:0.4753054394,t60:0.4753054394):0.4696978439):0.1131584267,(t128:0.2455250782,t318:0.2455250782):0.8126366318):0.1182540374):0.9480272918,((t42:1.492953023,(((t153:0.003579661039,t427:0.003579661039):0.6841336819,t192:0.487713343):0.4214751603,t51:0.9091885033):0.5837645201):0.5857037997,(t476:0.325654549,t26:1.633590017):0.6450668063):0.04578621607):0.3397227126):0.2538320937):0.4871839122):0.04787382082,t436:0.004945567286):0.186335764,t363:0.07866369644):0.1634449037,((((t178:0.7164769766,(t45:0.1183306518,(t441:0.06353731722,t132:0.06353731722):0.05479333456):0.8116662925):0.05668473475,(t82:0.285083934,t450:0.285083934):0.501597745):1.401141419,(t403:1.586679068,(t173:0.2904819072,t8:0.09048190718):1.496197161):0.6011440302):0.825131132,t191:3.01295423):0.589882016):0.8396178017,((((t83:0.9082110756,(t440:0.1043629266,t314:0.1043629266):0.8038481491):0.02839741624,((t335:0.2283959331,(t294:0.2116826268,t226:0.2116826268):0.01671330628):0.6374371072,(t166:0.1866029993,t283:0.1866029993):0.879230041):0.07077545158):2.588288759,((t164:0.2755419352,t343:2.231999714):1.150278426,(((t412:0.1498544486,(t56:0.2655742781,t384:0.1390347243):2.021024624):0.01743030143,(t241:0.08078252026,t457:0.3006427057):1.365537854):0.6491645603,(t168:1.813044793,(t126:1.365084036,t80:0.2630498049):1.482225645):0.1058840838):0.4290843758):0.1426191104):0.4188145872,(((t229:1.639561123,((t136:0.2963345455,(t203:1.352540714,t121:1.152540714):0.5237028955):0.4692135867,(t129:0.7265725032,(((t413:0.09483873973,t438:0.09483873973):0.4002299869,t181:0.09897680572):0.3785934156,(t429:0.1333014716,t212:0.2202808429):0.6533812994):0.613508101):0.6582869526):0.6996091266):0.4701087999,t432:0.2554097163):0.4633121027,(((t179:1.594658551,((((t310:0.08571346866,t261:0.08571346866):0.6707662031,((t503:0.4610737968,(t405:0.4748373896,t138:0.2748373896):0.1862364072):0.1118701514,t425:0.5729439482):0.1835357236):0.2611976924,t202:0.369669287):0.2195239848,(t472:0.1761448103,((t88:0.5382663364,((t267:0.2574718962,((t91:0.02451016587,t410:0.02451016587):0.2009153861,(t231:0.1691769559,t148:0.1691769559):0.05624859608):0.03204634419):0.08469785001,(t327:0.2760666845,(t362:0.1134693362,(t94:0.03675478312,t230:0.03675478312):0.07671455306):0.1625973483):0.06610306172):0.1960965902):0.5249633529,((t84:0.06118474328,t110:0.2611847433):0.1847617829,t491:0.2459465262):0.8172831631):0.05087771075):0.1230939489):0.3574572021):0.8253047659,(t86:0.32455468,t171:0.12455468):2.295408637):0.5637995945,(((t506:1.698284987,(((t339:0.1251835461,t293:0.1251835461):0.8058312667,t2:0.7310148128):0.8619618792,((t238:0.02360079309,t72:0.685514337):0.5395678008,(t358:0.5853015591,(t292:0.2227704829,t421:0.2227704829):0.3625310762):0.6397805787):0.3678945542):0.1053082945):0.7096412775,t39:2.407926264):0.2339467564,(t459:0.4089072799,((t275:1.180654637,t379:1.180654637):1.038730628,(t243:1.492214546,(t333:1.503624754,((((t149:0.003965449214,(t481:0.002831414236,t252:0.002831414236):0.001134034978):0.5120601812,(t398:0.004582721084,t101:0.004582721084):0.5114429093):0.04855483109,t469:0.5645804615):0.2314354793,(t336:0.3161507544,t10:0.3161507544):0.4798651864):0.7076088131):0.1621832366):0.5535772745):0.2886521784):0.1338355771):0.3418898909):0.7947243136):0.1652246126):0.4987422102):0.4969056193):0.100367873):1.14651016,((t311:0.7312162055,((((t274:1.30189771,(t466:0.528805401,(t312:0.2784411589,t172:0.06477208724):0.2503642421):0.7730923089):0.0509511809,(t341:0.3700925366,t58:0.3700925366):0.9827563541):0.6987054085,t485:0.3761563329):1.31063117,((t420:0.9828067579,(t431:0.1680014694,t242:0.1680014694):0.6148052885):2.428136268,(t245:0.3811886002,t449:1.636144926):1.7747981):0.1512424427):0.5939166663):0.9429638114,((((((t193:0.1554108178,t113:0.1554108178):1.768464212,((t286:0.5458304623,(t240:1.367671536,t146:1.367671536):0.2761176016):0.1733783343,t465:1.817167472):0.1067075581):0.8783638696,(t382:0.7115505056,t161:0.5115505056):2.290688394):0.9184536108,(((t78:0.08594702157,(t122:0.1257036379,t271:0.1257036379):1.159110473):0.6017898477,(t493:0.1104276023,(((t5:0.03120336287,t437:0.03120336287):0.06775126243,t206:0.0989546253):0.06772982194,(t380:0.1388396159,t407:0.1388396159):0.02784483131):1.388878357):0.5310411547):0.970149338,(t79:1.265811035,t433:1.265811035):1.590942262):0.8639392136):0.3562195583,t416:1.010114578):0.1403291924,((((t397:0.2686947477,t109:0.1015985204):0.03814101315,(t115:0.04418577673,t323:0.04418577673):0.7518520188):1.427036056,(t217:0.5729839323,((t467:0.1712162031,t399:0.1712162031):0.1143673904,t492:0.2855835935):1.469326844):0.4681634146):0.08489717242,(t232:0.03298193106,t37:0.03298193106):2.274989093):1.909270237):0.6818246857):1.287171753):0.01218621858,(((t264:3.77505241,(((t157:0.01298176967,(t372:1.304057477,(t74:0.4242663694,(t213:0.02290732383,t288:0.02290732383):0.6013590455):0.8797911074):0.276699939):1.309077927,(((t70:0.3753448656,(t30:0.6960450006,((t188:0.03741102873,t439:0.03741102873):0.6314897859,t29:0.6689008147):0.02714418589):0.9592680066):0.5050302135,((((t186:0.4538782873,(t454:0.163483199,t322:0.363483199):0.09039508829):0.0006769497807,t66:0.254555237):1.390061876,t239:0.2856175398):0.4700653278,((t442:0.6124055786,(((t235:0.05773162308,t368:0.05773162308):0.8895293698,t349:0.7472609929):0.3659030579,(t428:0.6294506728,t44:0.7169021655):0.3962618854):0.7575253565):0.1274087736,t464:1.998098181):0.1165842596):0.0456607801):0.2689581191,t237:0.1836160999):0.4605340031):0.006758429938,(((t199:0.3660933972,(t123:0.004636832048,t447:0.004636832048):0.3614565652):0.5664461706,((((t135:0.2644105277,t127:0.2644105277):0.008312691273,t40:0.272723219):0.05024774162,((t20:0.07319633174,t177:0.07319633174):0.1364550183,t348:0.20965135):0.1133196106):0.06497201858,t47:0.3879429792):0.5445965886):0.2482655347,t260:1.180805103):1.71578867):0.8784586372):1.290127609,((((t475:1.822188438,t483:0.1596410207):0.4415356315,(t108:0.06287049912,((t35:0.3000242796,(t387:0.1083001262,t102:0.1083001262):1.357919772):0.3105724316,t31:0.2053070368):0.07336152154):0.4135702181):1.832742299,(((((((t400:0.5213475596,t216:0.02965400707):0.1022476416,t24:0.4235952013):0.1491473634,t304:0.3941002514):0.3315054549,t389:0.9042480195):0.6428899066,(t281:0.551185098,((t49:0.2919605649,t75:0.09196056489):0.1897163738,t381:0.2816769386):0.9667873481):0.2986736393):0.2964316089,t277:1.843569535):0.5147833279,((t145:0.162465393,t219:0.162465393):0.8779536412,t137:1.040419034):1.317933829):1.738113505):0.5345110508,(((t364:0.7391268006,(((((((t118:0.4617361457,((t443:0.1322648795,t307:0.1322648795):0.109036608,t295:0.2413014876):0.2405765935):0.3371802395,t184:0.1391154762):1.536104303,(((t500:1.073697096,t460:1.154542395):0.1049391113,t156:1.259481507):0.6280306859,(t347:0.5644515807,((t458:0.490015302,t87:0.1646644452):0.1346602267,(t468:0.3283451128,t474:0.1021940741):0.2963304159):0.1222610282):1.140575636):0.4676504313):0.09669754349,((t247:0.1519322038,t244:0.7608985626):1.11025891,((((t69:0.1693931614,t255:0.3693931614):0.4887263541,t462:0.8581195155):0.07153574251,t214:0.729655258):0.8468320172,(t365:0.330996366,t375:1.120011038):0.4564762368):0.2946701974):0.5807026946):0.4159800989,(((t176:0.04929670973,t417:0.04929670973):1.078039021,t27:1.127335731):0.5800691676,(t360:0.4204233453,(t142:0.756803541,t13:0.756803541):0.7819351224):0.1686662352):1.160435367):0.04387514678,((t1:0.3300758318,t482:0.3926015851):0.2537828241,(((t97:0.01293077621,t278:0.01293077621):2.054499799,(t167:0.01284019385,(t369:0.5207370505,t160:0.5207370505):1.05592749):0.4907660342):0.3054304482,(t61:0.1653917605,((((t366:1.678100693,((t505:0.5225250848,t71:0.5225250848):0.2502889797,((t445:0.3982318678,t105:0.3982318678):0.09358672591,t501:0.4918185937):0.2809954708):0.7052866286):0.3829175444,((t50:0.7505348676,t21:0.133841294):0.1186100399,(t120:0.1381367916,t296:0.1116928062):0.3162088737):0.99187333):0.2230371419,(t331:0.01753409096,(((t141:0.9244357497,(t385:0.005195842511,t488:0.005195842511):0.9192399072):0.1785596782,(t424:0.2833158937,t418:1.029869843):0.07312558469):0.2200023471,(t404:0.8695456979,t14:0.8695456979):0.453452077):0.694189532):0.06686807255):0.08387053219,((t218:0.1466312089,t48:0.1466312089):0.539812204,((t435:0.1005118892,t144:0.1005118892):0.4161192609,(t263:0.1352131731,t305:0.1352131731):0.381417977):0.1698122628):1.481482499):0.1605842476):0.04435086402):0.5220976971):0.01675669249):0.3113446158,t163:0.8750976787):0.1102706328):0.0106800136,((t388:1.958639562,t46:1.958639562):0.5246940207,((t106:0.4515471157,t268:0.4515471157):1.281771844,(((((t415:0.1249620701,t300:0.1931271686):0.1477252657,(t325:0.2444164662,t408:0.2444164662):0.09643596809):0.1197972447,t77:0.1366428741):0.669096688,((t290:0.7175157272,t484:0.7175157272):0.3514363399,t355:1.068952067):0.06079429984):0.1027165203,t350:0.673990605):0.5008560729):0.7500146227):0.8606770922):0.7654495281,((t470:0.4264918021,((((t180:0.3989333974,t489:0.3989333974):0.7903368862,(t185:0.174797163,t59:0.174797163):1.014473121):0.07666287231,((((t169:0.07964466965,(t455:0.3519527308,t371:0.3519527308):0.2057206473):0.3616177686,t386:0.9192911467):0.08281264168,t337:1.002103788):0.2515725723,(t90:0.4578676053,t68:0.4578676053):0.7958087554):0.01225679522):0.541365317,((t494:0.6734595329,t221:0.6734595329):0.5775108283,t165:1.250970361):0.5563281117):0.5414687354):0.1897040071,(((t401:0.5744533262,(t282:1.059302079,((t306:0.3989215051,t507:0.3989215051):0.2330021278,((t95:0.02798372359,t334:0.02798372359):0.2610756459,t329:0.2890593695):0.3428642634):0.4273784465):1.200696009):0.1877101969,t155:0.4725445239):0.001475303897,((t227:0.02935110661,t390:0.02935110661):0.4807956261,t130:0.5101467327):1.939036856):0.08928762626):1.570988988):0.5215172159):0.4342025998):0.6609257545,(((((t25:0.0259413206,(t266:0.1256432504,((t359:0.04219243434,t357:0.04219243434):0.03656231866,t250:0.078754753):0.0468884974):2.706332525):0.6140951033,t246:0.03124269319):0.3563494153,(t32:0.9147165801,((t67:0.4027706389,t64:0.4027706389):1.214292663,((((t207:0.5824748514,t367:0.5824748514):0.168563757,((t183:0.08996095976,t262:0.08996095976):0.2011326323,t376:0.291093592):0.4599450164):0.5410061612,t452:1.29204477):0.2709734669,(((t228:0.04802545699,t496:0.2623221248):0.6618470817,t73:1.249519367):0.04150513762,t189:0.2982637485):0.2719937322):0.05404506546):0.3023301862):1.683026806):0.9403291056,((t352:0.7222671548,t111:0.6211474231):0.05426537895,(((((((t151:0.2980348099,t98:0.2980348099):0.5489009977,(t119:0.6875933276,(t223:0.5462078433,t451:0.5462078433):0.1413854843):0.15934248):0.1566887442,(((t446:0.4123454275,t301:0.4123454275):0.339150777,t354:0.7514962044):0.1474740827,((((t299:0.1929866729,t220:0.1929866729):0.122371863,t308:0.115358536):0.2640608598,t444:0.3794193957):0.4873593429,t473:0.8667787387):0.03219154851):0.1046542646):0.2539041749,(t345:0.8026156051,t256:0.8026156051):0.4549131216):0.2775153976,(t499:0.48707219,t224:0.48707219):1.047971934):0.4291987629,(t395:0.1448745391,((t356:0.8445882144,((t194:0.6421427158,((t62:0.4262106023,(t298:0.1417304884,t182:0.1417304884):0.2844801139):0.199982832,(t211:0.371606628,t279:0.371606628):0.2545868064):0.01594928145):0.0428446512,t76:0.6849873671):0.1596008473):0.2323643484,((t289:0.4531313764,t419:0.4531313764):0.5831868589,(t509:0.2317872784,(t511:0.3383967562,t114:0.1383967562):0.674887954):0.223033525):0.04063432753):0.08506709533):0.8022232291):1.073213774,(t18:1.342715843,(((t248:1.149350908,(((t92:0.2186807739,t353:0.01868077386):0.6084047595,(t480:0.2497190564,(t53:0.2237109239,(t254:0.1881024991,t272:0.1881024991):0.03560842484):0.0260081325):0.3773664769):0.05610688162,((t34:0.05281021912,t374:0.05281021912):0.5940221265,(t317:0.1930147643,t143:0.1930147643):0.4538175813):0.03636006935):0.2661584927):0.4377742411,(t351:1.148860818,t249:1.148860818):0.2382643312):1.383277644,(((t174:0.2211199786,t104:0.7898716006):0.3180828786,((t22:0.6762433039,((t225:0.3545454957,t200:0.2402043946):0.2669293486,(t187:0.5576204094,(t316:0.170069699,t328:0.370069699):0.3875507105):0.06385443489):0.09230774236):0.2160593564,t196:0.9298419431):0.1781125362):0.4864572039,((((t394:0.02612795927,t396:0.04623303825):0.046697295,t383:0.09293033325):0.378309067,((t487:0.1204011717,t4:0.1204011717):0.09365379776,(t479:0.05452020883,t38:0.05452020883):0.3595347607):0.2571844308):1.018004482,t251:0.2953117182):0.1051678005):1.17599111):0.02279275425):0.2442611145):1.259978919):0.2453138191):1.011525769,t486:0.4758645276):0.1718306046):0.4723181453):0.1926126634,((((t324:0.9795135261,t490:3.106711368):0.9503120565,t303:2.019235664):0.03239005543,((t140:0.2445932076,t99:1.136361993):1.014571281,t315:0.6912319013):1.738480206):0.07298123929,((t133:0.1239703401,(t233:0.6442115998,t280:0.1093668423):0.8265387802):0.02251810926,(t332:0.4451044134,(((((((t342:0.6233106408,t497:0.6233106408):0.2661362305,t6:1.089446871):0.4644844535,t409:1.353931325):0.5878075785,t313:0.08560220888):0.1940768099,t370:2.10795825):0.3508817322,t65:0.5407092881):0.2538971523,(((t346:1.140044942,((t378:0.9603635258,t320:0.7603635258):0.2201896617,t215:0.2135355373):0.1594917542):0.01765416584,t152:1.157699108):0.4049161845,((t54:0.03367821136,t150:0.03367821136):0.5127856125,(t508:0.3197773992,t147:0.33874379):0.2077200338):1.016151468):1.177979305):0.4801933817):0.6462629831):0.09534375662):2.428641863):3.222895314):0.04761842256,t373:0.1901275924):0.1873675176,t453:0.7136745171):0.556560198;"/>
+   <BirthDeathSkylineModel spec="bdsky.evolution.speciation.BirthDeathSkylineModel" id="birthDeath" tree="@tree" conditionOnSurvival="false">
+		<parameter name="origin" id="origin" value ="11.04892" lower="0."/>  	
+	
+		<!-- dimension of reproductiveNumber, becomeUninfectiousRate and samplingProportion must be either equal to intervalNumber, or 1 (i.e. rate is constant over time) -->
+		<parameter name="reproductiveNumber" id="reproductiveNumber" value="2" lower="0." dimension ="5"/>
+		<parameter name="becomeUninfectiousRate" id="becomeUninfectiousRate" value="10" lower="0." dimension ="5"/>
+		<parameter name="samplingProportion" id="samplingProportion" value="0.1" lower="0." upper="1." dimension ="5"/>
+        <parameter name="rho" id="rho" value="0.3" lower="0." upper="1."/>
+        <reverseTimeArrays dimension ="4" id = "BooleanParameter.0" spec = "parameter.BooleanParameter" value = "true"/>
+	</BirthDeathSkylineModel>
+
+	<!-- <siteModel gammaCategoryCount="4" id="SiteModel" proportionInvariant="@proportionInvariant" spec="SiteModel">
+		<parameter dimension="1"  id="mutationRate" name="mutationRate" value="1.0"/>
+		<parameter dimension="1" id="gammaShape" name="shape" value="0.5" lower="0.0" upper="1000.0"/>
+		<substModel id="gtr" rateAC="@rateAC" rateGT="@rateGT" rateAT="@rateAT" rateCG="@rateCG" rateCT="@rateCT" spec="GTR">
+			<parameter dimension="1"  id="rateAG" lower="0.0" name="rateAG" value="1.0"/>
+			<frequencies estimate="true" id="freqs" spec="Frequencies">
+				<parameter name='frequencies' id='freqParameter' value='0.25' dimension='4' lower="0." upper="1."/>
+			</frequencies>
+		</substModel>
+	</siteModel>
+	<branchRateModel id="StrictClock" spec="beast.base.evolution.branchratemodel.StrictClockModel">
+		<parameter dimension="1" id="clock.rate" name="clock.rate" value="0.1" lower="0." upper="100."/> 
+	</branchRateModel> -->
+
+   
+    <distribution id="posterior" spec="beast.base.inference.CompoundDistribution">
+		<distribution id="prior" spec="beast.base.inference.CompoundDistribution">
+			<distribution id="BDlikelihood" spec="beast.base.inference.CompoundDistribution">
+				<distribution idref="birthDeath"/>		
+			</distribution>
+
+			<!-- this prior distribution corresponds to a probability of being sampled at present of 0.01 % -->
+			<!-- <distribution id="rho_prior" spec="beast.base.inference.distribution.Prior" x="@rho">
+				<distr spec="beast.base.inference.distribution.Beta" alpha="1." beta="9999." offset="0."/> 
+			</distribution>
+			<distribution  id='origin_Prior' x="@origin" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.Uniform' lower="0." upper="1000."/>	
+			</distribution>
+			<distribution  id='reproductiveNumber_Prior' x="@reproductiveNumber" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.LogNormalDistributionModel' M="0" S="1.25"/>	
+			</distribution>
+			<distribution  id='becomeUninfectiousRate_Prior' x="@becomeUninfectiousRate" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.Uniform' lower="0." upper="100."/>	
+			</distribution> -->
+    	</distribution>
+        <!-- <distribution id="jointTreeLikelihood" spec="beast.base.inference.CompoundDistribution">      
+			<distribution data="@alignment" id="treeLikelihood" spec="TreeLikelihood" tree="@tree" siteModel="@SiteModel" branchRateModel="@StrictClock"/>           
+        </distribution>    	 -->
+    </distribution>
+
+	
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="birth" expression="reproductiveNumber becomeUninfectiousRate *"> <!-- s/(d+s) -->
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="reproductiveNumber"/>        
+	</RPNcalculator>
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="sampling" expression="becomeUninfectiousRate samplingProportion *"> 
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="samplingProportion"/>        
+	</RPNcalculator>
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="death" expression="becomeUninfectiousRate 1 samplingProportion - *"> <!-- b*S0/(d+s) -->
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="samplingProportion"/>        
+	</RPNcalculator>
+    
+
+	<run chainLength="200000000" id="mcmc" spec="MCMC" storeEvery="1000" distribution="@posterior">
+     
+		<state id="state" storeEvery="100000">
+			<!-- <stateNode idref='tree'/> -->
+			<stateNode idref='origin'/>
+            <stateNode idref='rho'/>
+			<stateNode idref='becomeUninfectiousRate'/>
+            <stateNode idref='samplingProportion'/>
+			<stateNode idref='reproductiveNumber'/>
+
+			<!-- <stateNode idref="clock.rate"/>		
+			<stateNode idref="freqParameter"/>		
+			<stateNode idref="gammaShape"/>
+			<parameter dimension="1"  id="rateAC" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateGT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateAT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateCG" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateCT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="proportionInvariant" name="stateNode" value="0.1"/>	 -->
+		</state>
+	
+		<!-- parameter weights for RealParameters roughly equal to parameter dimension --> 
+		<operator id='becomeUninfectiousRate_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@becomeUninfectiousRate"/>
+        <!-- <operator id='sampling_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@samplingProportion"/>
+		<operator id='reproductiveNumber_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@reproductiveNumber"/>
+
+		<operator id="updown" spec="UpDownOperator" scaleFactor=".75" weight="10">
+			<up idref="reproductiveNumber"/>
+			<down idref="becomeUninfectiousRate"/>
+		</operator>
+
+		<operator id='orig_scaler' spec='ScaleOperator' scaleFactor=".75" weight="1" parameter="@origin"/> -->
+
+		<!-- <operator id="tree_updown" spec="UpDownOperator" scaleFactor=".75" weight="10">
+			<up idref="tree"/>
+			<down idref="clock.rate"/>
+		</operator>
+		<operator id='clock.rate_Scaler' spec='ScaleOperator' scaleFactor=".75" weight="1" parameter="@clock.rate" />
+
+		<operator id='treeScaler_root' spec='ScaleOperator' scaleFactor=".75" weight="1" tree="@tree" degreesOfFreedom="1" scaleAllIndependently="false" rootOnly='true'/>
+		<operator id='treeScaler' spec='ScaleOperator' scaleFactor=".75" weight="20" tree="@tree"/>
+		<operator spec='Uniform' weight="40" tree="@tree"/>
+		<operator spec='SubtreeSlide' weight="20" gaussian="true" size="1." tree="@tree"/>
+		<operator id='narrow2' spec='Exchange' isNarrow='true' weight="10" tree="@tree"/>
+		<operator id='wide2' spec='Exchange' isNarrow='false' weight="10" tree="@tree"/>
+		<operator spec='WilsonBalding' weight="10" tree="@tree"/>
+		
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateAC"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateAT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateCG"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateCT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateGT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@proportionInvariant"/>
+		<operator id='gammaShapeScaler' spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@gammaShape"/>
+		<operator autoOptimize="true" delta="0.2" id="FrequenciesExchanger" integer="false" spec="DeltaExchangeOperator" weight="0.1" parameter="@freqParameter"/> -->
+
+		<logger fileName="BDSKY_contemp_$(seed).log" id="tiplog" logEvery="1000" mode="autodetect" model="@posterior">
+			<distribution idref="posterior" name="log"/>
+			<log idref="BDlikelihood"/>
+			<!-- <log idref="jointTreeLikelihood"/> -->
+			<log id="TreeHeight" spec="beast.base.evolution.tree.TreeHeightLogger" tree="@tree"/>
+			<log idref="origin"/>
+
+			<!-- <log idref="gammaShape"/>
+			<log idref="freqParameter"/>
+			<log idref="rateAC"/>
+			<log idref="rateAG"/>
+			<log idref="rateAT"/>
+			<log idref="rateCG"/>
+			<log idref="rateCT"/>
+			<log idref="rateGT"/>
+			<log idref="proportionInvariant"/> -->
+
+			<log idref='reproductiveNumber'/>
+			<log idref="becomeUninfectiousRate"/>
+			<log idref='samplingProportion'/>
+			<log idref="birth"/>
+			<log idref="death"/>
+			<log idref="sampling"/>
+		</logger>
+	
+		<logger id="screenlog" logEvery="10000" mode="autodetect">
+			<distribution idref="posterior" name="log"/>
+			<log arg="@posterior" id="ESS.0" spec="util.ESS"/>
+			<log idref="BDlikelihood"/>
+			<!-- <log idref="jointTreeLikelihood"/> -->
+		</logger>
+		
+		<!-- <logger fileName="BDSKY_sequential_$(seed).trees" id="treelog" logEvery="10000" mode="tree">
+			<log spec='beast.base.evolution.TreeWithMetaDataLogger' tree='@tree'>
+				<metadata idref="posterior"/>
+				<branchratemodel idref='StrictClock'/>
+			</log>
+		</logger> -->
+
+	</run>
+
+</beast>

@@ -1,0 +1,202 @@
+<!-- Model: Birth-death skyline model (with contemporaneous sampling) -->
+<!-- Source: Stadler T, Kühnert D, Bonhoeffer S, Drummond AJ (2013) Birth-death skyline plot reveals temporal changes of epidemic spread in HIV and HCV. PNAS 110: 228–233. -->
+<!-- BEAST version: Runs on BEAST 2.1.0 - see beast2.org for downloads -->
+
+
+<beast namespace="beast.pkgmgmt:beast.base.core:beast.base.inference:beast.base.evolution.alignment:beast.base.evolution.tree.coalescent:beast.base.util:beast.base.math:beast.evolution.nuc:beast.base.evolution.operator:beast.base.inference.operator:beast.base.evolution.sitemodel:beast.base.evolution.substitutionmodel:beast.base.evolution.likelihood:beast.base.evolution.speciation:beast.pkgmgmt:beast.base.core:beast.base.inference.parameter" version="2.0">
+
+
+    <!-- The sequence alignment                                                  -->
+    <!-- ntax=6 nchar=768                                                        -->
+    <!-- npatterns=69                                                            -->
+    <!-- specify the taxa -->
+<data id="alignment" dataType="nucleotide">
+    <sequence taxon="t11">?</sequence>
+    <sequence taxon="t18">?</sequence>
+    <sequence taxon="t16">?</sequence>
+    <sequence taxon="t14">?</sequence>
+    <sequence taxon="t17">?</sequence>
+    <sequence taxon="t13">?</sequence>
+    <sequence taxon="t3">?</sequence>
+    <sequence taxon="t2">?</sequence>
+    <sequence taxon="t10">?</sequence>
+    <sequence taxon="t8">?</sequence>
+    <sequence taxon="t15">?</sequence>
+    <sequence taxon="t12">?</sequence>
+    <sequence taxon="t4">?</sequence>
+    <sequence taxon="t6">?</sequence>
+    <sequence taxon="t7">?</sequence>
+    <sequence taxon="t1">?</sequence>
+    <sequence taxon="t5">?</sequence>
+    <sequence taxon="t19">?</sequence>
+    <sequence taxon="t20">?</sequence>
+    <sequence taxon="t9">?</sequence>
+</data>
+
+
+    <!-- specify the tree -->
+   <tree id="tree" spec="beast.base.evolution.tree.TreeParser"  taxa="@alignment" adjustTipHeights="false" newick="((((t11:0.8641994423,t18:0.3814671613):0.4114163885,(((t16:0.3575752497,((t14:0.3182420341,t17:0.3182420341):0.01093999737,(t13:0.03985986191,(t3:0.01233510867,t2:0.01233510867):0.02752475324):0.4893221696):0.02839321824):1.726270654,(t10:1.603290191,((t8:0.767209846,t15:0.767209846):0.003754593468,t12:0.7709644394):0.832325752):0.4805557119):0.4960886775,t4:1.799444726):0.06564977701):0.3759823431,(t6:1.476839488,t7:0.761632051):0.3564629451):0.5048065127,(t1:1.174430679,((t5:0.8866569232,(t19:0.4089892434,t20:0.582627463):0.3040294603):0.9069244592,t9:0.6479911683):1.011262744):0.7215290876):0.2533003474;"/>
+   <BirthDeathSkylineModel spec="bdsky.evolution.speciation.BirthDeathSkylineModel" id="birthDeath" tree="@tree" conditionOnSurvival="false">
+		<parameter name="origin" id="origin" value ="4.726373" lower="0."/>  	
+	
+		<!-- dimension of reproductiveNumber, becomeUninfectiousRate and samplingProportion must be either equal to intervalNumber, or 1 (i.e. rate is constant over time) -->
+		<parameter name="reproductiveNumber" id="reproductiveNumber" value="2" lower="0." dimension ="5"/>
+		<parameter name="becomeUninfectiousRate" id="becomeUninfectiousRate" value="10" lower="0." dimension ="5"/>
+		<parameter name="samplingProportion" id="samplingProportion" value="0.1" lower="0." upper="1." dimension ="5"/>
+        <parameter name="rho" id="rho" value="0.3" lower="0." upper="1."/>
+        <reverseTimeArrays dimension ="4" id = "BooleanParameter.0" spec = "parameter.BooleanParameter" value = "true"/>
+	</BirthDeathSkylineModel>
+
+	<!-- <siteModel gammaCategoryCount="4" id="SiteModel" proportionInvariant="@proportionInvariant" spec="SiteModel">
+		<parameter dimension="1"  id="mutationRate" name="mutationRate" value="1.0"/>
+		<parameter dimension="1" id="gammaShape" name="shape" value="0.5" lower="0.0" upper="1000.0"/>
+		<substModel id="gtr" rateAC="@rateAC" rateGT="@rateGT" rateAT="@rateAT" rateCG="@rateCG" rateCT="@rateCT" spec="GTR">
+			<parameter dimension="1"  id="rateAG" lower="0.0" name="rateAG" value="1.0"/>
+			<frequencies estimate="true" id="freqs" spec="Frequencies">
+				<parameter name='frequencies' id='freqParameter' value='0.25' dimension='4' lower="0." upper="1."/>
+			</frequencies>
+		</substModel>
+	</siteModel>
+	<branchRateModel id="StrictClock" spec="beast.base.evolution.branchratemodel.StrictClockModel">
+		<parameter dimension="1" id="clock.rate" name="clock.rate" value="0.1" lower="0." upper="100."/> 
+	</branchRateModel> -->
+
+   
+    <distribution id="posterior" spec="beast.base.inference.CompoundDistribution">
+		<distribution id="prior" spec="beast.base.inference.CompoundDistribution">
+			<distribution id="BDlikelihood" spec="beast.base.inference.CompoundDistribution">
+				<distribution idref="birthDeath"/>		
+			</distribution>
+
+			<!-- this prior distribution corresponds to a probability of being sampled at present of 0.01 % -->
+			<!-- <distribution id="rho_prior" spec="beast.base.inference.distribution.Prior" x="@rho">
+				<distr spec="beast.base.inference.distribution.Beta" alpha="1." beta="9999." offset="0."/> 
+			</distribution>
+			<distribution  id='origin_Prior' x="@origin" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.Uniform' lower="0." upper="1000."/>	
+			</distribution>
+			<distribution  id='reproductiveNumber_Prior' x="@reproductiveNumber" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.LogNormalDistributionModel' M="0" S="1.25"/>	
+			</distribution>
+			<distribution  id='becomeUninfectiousRate_Prior' x="@becomeUninfectiousRate" spec='beast.base.inference.distribution.Prior'>
+				<distr spec='beast.base.inference.distribution.Uniform' lower="0." upper="100."/>	
+			</distribution> -->
+    	</distribution>
+        <!-- <distribution id="jointTreeLikelihood" spec="beast.base.inference.CompoundDistribution">      
+			<distribution data="@alignment" id="treeLikelihood" spec="TreeLikelihood" tree="@tree" siteModel="@SiteModel" branchRateModel="@StrictClock"/>           
+        </distribution>    	 -->
+    </distribution>
+
+	
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="birth" expression="reproductiveNumber becomeUninfectiousRate *"> <!-- s/(d+s) -->
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="reproductiveNumber"/>        
+	</RPNcalculator>
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="sampling" expression="becomeUninfectiousRate samplingProportion *"> 
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="samplingProportion"/>        
+	</RPNcalculator>
+	<RPNcalculator spec="beast.base.inference.util.RPNcalculator" id="death" expression="becomeUninfectiousRate 1 samplingProportion - *"> <!-- b*S0/(d+s) -->
+		<parameter idref="becomeUninfectiousRate"/>
+		<parameter idref="samplingProportion"/>        
+	</RPNcalculator>
+    
+
+	<run chainLength="200000" id="mcmc" spec="MCMC" storeEvery="1000" distribution="@posterior">
+     
+		<state id="state" storeEvery="100000">
+			<!-- <stateNode idref='tree'/> -->
+			<stateNode idref='origin'/>
+            <stateNode idref='rho'/>
+			<stateNode idref='becomeUninfectiousRate'/>
+            <stateNode idref='samplingProportion'/>
+			<stateNode idref='reproductiveNumber'/>
+
+			<!-- <stateNode idref="clock.rate"/>		
+			<stateNode idref="freqParameter"/>		
+			<stateNode idref="gammaShape"/>
+			<parameter dimension="1"  id="rateAC" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateGT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateAT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateCG" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="rateCT" lower="0.0" upper="100.0" name="stateNode" value="1.0"/>
+			<parameter dimension="1"  id="proportionInvariant" name="stateNode" value="0.1"/>	 -->
+		</state>
+	
+		<!-- parameter weights for RealParameters roughly equal to parameter dimension --> 
+		<operator id='becomeUninfectiousRate_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@becomeUninfectiousRate"/>
+        <!-- <operator id='sampling_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@samplingProportion"/>
+		<operator id='reproductiveNumber_scaler' spec='ScaleOperator' scaleFactor=".75" weight="10" parameter="@reproductiveNumber"/>
+
+		<operator id="updown" spec="UpDownOperator" scaleFactor=".75" weight="10">
+			<up idref="reproductiveNumber"/>
+			<down idref="becomeUninfectiousRate"/>
+		</operator>
+
+		<operator id='orig_scaler' spec='ScaleOperator' scaleFactor=".75" weight="1" parameter="@origin"/> -->
+
+		<!-- <operator id="tree_updown" spec="UpDownOperator" scaleFactor=".75" weight="10">
+			<up idref="tree"/>
+			<down idref="clock.rate"/>
+		</operator>
+		<operator id='clock.rate_Scaler' spec='ScaleOperator' scaleFactor=".75" weight="1" parameter="@clock.rate" />
+
+		<operator id='treeScaler_root' spec='ScaleOperator' scaleFactor=".75" weight="1" tree="@tree" degreesOfFreedom="1" scaleAllIndependently="false" rootOnly='true'/>
+		<operator id='treeScaler' spec='ScaleOperator' scaleFactor=".75" weight="20" tree="@tree"/>
+		<operator spec='Uniform' weight="40" tree="@tree"/>
+		<operator spec='SubtreeSlide' weight="20" gaussian="true" size="1." tree="@tree"/>
+		<operator id='narrow2' spec='Exchange' isNarrow='true' weight="10" tree="@tree"/>
+		<operator id='wide2' spec='Exchange' isNarrow='false' weight="10" tree="@tree"/>
+		<operator spec='WilsonBalding' weight="10" tree="@tree"/>
+		
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateAC"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateAT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateCG"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateCT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@rateGT"/>
+		<operator spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@proportionInvariant"/>
+		<operator id='gammaShapeScaler' spec='ScaleOperator' scaleFactor=".75" weight=".2" parameter="@gammaShape"/>
+		<operator autoOptimize="true" delta="0.2" id="FrequenciesExchanger" integer="false" spec="DeltaExchangeOperator" weight="0.1" parameter="@freqParameter"/> -->
+
+		<logger fileName="BDSKY_contemp_$(seed).log" id="tiplog" logEvery="1000" mode="autodetect" model="@posterior">
+			<distribution idref="posterior" name="log"/>
+			<log idref="BDlikelihood"/>
+			<!-- <log idref="jointTreeLikelihood"/> -->
+			<log id="TreeHeight" spec="beast.base.evolution.tree.TreeHeightLogger" tree="@tree"/>
+			<log idref="origin"/>
+
+			<!-- <log idref="gammaShape"/>
+			<log idref="freqParameter"/>
+			<log idref="rateAC"/>
+			<log idref="rateAG"/>
+			<log idref="rateAT"/>
+			<log idref="rateCG"/>
+			<log idref="rateCT"/>
+			<log idref="rateGT"/>
+			<log idref="proportionInvariant"/> -->
+
+			<log idref='reproductiveNumber'/>
+			<log idref="becomeUninfectiousRate"/>
+			<log idref='samplingProportion'/>
+			<log idref="birth"/>
+			<log idref="death"/>
+			<log idref="sampling"/>
+		</logger>
+	
+		<logger id="screenlog" logEvery="10000" mode="autodetect">
+			<distribution idref="posterior" name="log"/>
+			<log arg="@posterior" id="ESS.0" spec="util.ESS"/>
+			<log idref="BDlikelihood"/>
+			<!-- <log idref="jointTreeLikelihood"/> -->
+		</logger>
+		
+		<!-- <logger fileName="BDSKY_sequential_$(seed).trees" id="treelog" logEvery="10000" mode="tree">
+			<log spec='beast.base.evolution.TreeWithMetaDataLogger' tree='@tree'>
+				<metadata idref="posterior"/>
+				<branchratemodel idref='StrictClock'/>
+			</log>
+		</logger> -->
+
+	</run>
+
+</beast>

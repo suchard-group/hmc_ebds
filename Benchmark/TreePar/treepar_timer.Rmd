@@ -1,0 +1,192 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+
+
+```{r}
+set.seed(311)
+library(ape)
+library(castor)
+source_code_dir <- "~/TreePar/R/"  #The directory where all TreePar source code files are saved.
+file_path_vec <- list.files(source_code_dir, full.names = T)
+for(f_path in file_path_vec){source(f_path)}
+```
+
+```{r}
+#Revise LikShiftSTT function for timing
+likTiming <- function (par, times, ttype, numbd = 0, tconst = -1, sampling = 0, 
+    sprob, root = 0, survival = 1, tfixed = vector(), mint = 0, 
+    maxt = 0) 
+{
+    start_time <- Sys.time()
+    if (root == 0 && sum(ttype) * 2 != length(ttype)) {
+        print("Invalid input. Most likely you did not add a root edge to your tree using addroot().")
+    }
+    else {
+        rho <- sampling
+        if (length(ttype) == 1 && ttype == 0) {
+            ttype <- times * 0 + 1
+        }
+        shifts <- length(sprob)
+        if (maxt == 0) {
+            maxt <- max(times)
+        }
+        if (shifts > 1) {
+            l <- par[1:shifts]
+            k <- shifts + 1
+            if (numbd == 1) {
+                mu <- (1:shifts) * 0 + par[k] * (1 - sprob)
+                psi <- (1:shifts) * 0 + par[k] * (sprob)
+                k <- k + 1
+            }
+            else {
+                mu <- par[k:(k + shifts - 1)] * (1 - sprob)
+                psi <- par[k:(k + shifts - 1)] * (sprob)
+                k <- k + shifts
+            }
+            if (tconst == -1) {
+                t <- sort(c(0, par[k:length(par)], tfixed))
+            }
+            else {
+                t <- c(0, tconst)
+            }
+        }
+        else {
+            rho <- c(rho, 0)
+            t <- c(0, 0)
+            mu <- c(par[2], par[2]) * (1 - sprob)
+            psi <- c(par[2], par[2]) * sprob
+            l <- c(par[1], par[1])
+        }
+        if (length(rho) == 1) {
+            rho <- c(sampling, rep(0, shifts-1))
+        }
+        transmission <- times[which(ttype == 1)]
+        sampling <- times[which(ttype == 0)]
+        samplingkeep <- sampling
+        if (root == 1) {
+            transmission <- c(transmission, max(transmission))
+        }
+        extant <- length(transmission) - length(sampling)
+        out <- -10^12
+        boundary <- 0
+        for (i in 1:length(l)) {
+            if (l[i] <= 0 || min(psi[i], mu[i]) < 0) {
+                boundary <- 1
+            }
+        }
+        if (shifts == 2 && maxt < max(times)) {
+            if (t[2] <= mint || t[2] >= maxt) 
+                boundary <- 1
+        }
+        if (shifts > 2) {
+            if (par[length(par)] <= mint || par[length(par)] >= 
+                maxt) 
+                boundary <- 1
+        }
+        if (boundary == 0) {
+            out <- -(root + 1) * log(2 * l[interstt(max(transmission), 
+                t)])
+            if (survival == 1) {
+                
+                index <- interstt(max(transmission), t)
+                out <- out - (root + 1) * log(1 - p(index, max(transmission), 
+                  t, l, mu, psi, rho))
+            }
+            if (extant > 0) {
+                out <- out + extant * log(rho[1])
+            }
+            if (t[2] != 0) {
+                for (j in 2:length(t)) {
+                  index <- which(sampling == t[j])
+                  if (length(index) > 0) {
+                    sampling <- sampling[-index]
+                    out <- out + length(index) * log(rho[j])
+                  }
+                }
+            }
+            for (j in 1:length(transmission)) {
+                out <- out + (qfuncskylog(transmission[j], t, 
+                  l, mu, psi, rho)) + log(2 * l[interstt(transmission[j], 
+                  t)])
+            }
+            if (length(sampling) > 0) {
+                for (j in 1:length(sampling)) {
+                  out <- out - (qfuncskylog(sampling[j], t, l, 
+                    mu, psi, rho)) + log(psi[interstt(sampling[j], 
+                    t)])
+                }
+            }
+            for (j in 2:length(t)) {
+                samplingtemp <- extant
+                if (length(samplingkeep) > 0) {
+                  samplingtemp <- samplingtemp + length(which(samplingkeep < 
+                    t[j]))
+                }
+                transmissiontemp <- length(which(transmission < 
+                  t[j]))
+                nj <- samplingtemp - transmissiontemp
+                out <- out + nj * (qfuncskylog(t[j], t, l, mu, 
+                  psi, rho))
+            }
+        }
+        out <- out - (length(transmission) - 1 - root) * log(2)
+        end_time <- Sys.time()
+        time <- end_time - start_time
+        c(-out, time)
+    }
+}
+```
+
+```{r}
+time_total <- c()
+count <- 0
+
+for (i in c(5,16,32,64,128,256,512)){
+count = count +1
+rootlength<-1
+f1 <- '~/hmc_ebds/Benchmark/simulated_trees/12.tre'
+test0<-read.tree(f1)
+nodes <- 12
+
+all_distances1 <- get_all_distances_to_root(test0, as_edge_count=FALSE)
+max(all_distances1)
+nshifts <- i
+x = runif(n = nshifts, min = 1, max = 100)
+epochs <- (max(all_distances1)+rootlength)/nshifts
+time_shifts <- c()
+for (j in 1:nshifts-1){
+  time_shifts[j] = j*epochs
+}
+
+test<-addroot(test0,rootlength)
+test$Nnode<-nodes
+test$states<-rep(1,nodes)
+df <- as.data.frame(getx(test,sersampling=1))
+times<-df$times
+ttype<-df$ttype
+
+###################################################
+time = c()
+epoch_number = c(5,16,32,64,128,256,512)
+for (k in 1:500){
+list<-likTiming(c(x, c(rep(2.5,nshifts-1), rep(1.8,1)), time_shifts),
+times,ttype,sampling=0.2,sprob=rep(0.8,nshifts),survival=0,root=0)
+time[k] <- list[2]
+}
+time_total[count] <- mean(time)
+# Likelihood calculation
+# Tree with root edge
+}
+result <- cbind(epoch_number,time_total)
+as.data.frame(result)
+```
+
+
+
