@@ -225,7 +225,7 @@ The required TreePar package can be downloaded from [CRAN](https://cran-archive.
 
 ### VBSKY
 
-We first download the modified copy of the VBSKY package under `modified_ver` branch for [VBSKY](https://github.com/yucais/vbcompare/tree/modified_ver). Then using the graphical user interface of your computer, enter the `vbcompare` folder. Then use the following commands to run the analysis.
+We first download the modified copy of the VBSKY package under `gradient-timing` branch for [VBSKY](https://github.com/yucais/vbcompare/tree/gradient-timing). Then using the graphical user interface of your computer, enter the `vbcompare` folder. Then use the following commands to run the analysis.
 
   ```
   conda activate vbsky
